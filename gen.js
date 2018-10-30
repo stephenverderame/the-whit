@@ -1,4 +1,4 @@
-document.body.innerHTML = '<div top><p id="tbStart"><span arial tb l="new">Test Page</span><span arial tb l="old">Upload</span><span arial tb l="prof">Artist Profiles</span></div><div id="heady" header></p><span id="ht" l="index" big arial>The Whit<span></div>' + document.body.innerHTML;
+document.body.innerHTML = '<div top><p id="tbStart"><span arial tb l="new">Test Page</span><span arial tb l="upload">Upload</span><span arial tb l="prof">Artist Profiles</span></div><div id="heady" header></p><span id="ht" l="index" big arial>The Whit<span></div>' + document.body.innerHTML;
 document.body.innerHTML += '<div bottom><div id="bBar"><span bt big arial>test</span><span bt big arial>text</span><span bt big arial>here</span></div><div>';
 var gen;
 document.querySelectorAll('[l]').forEach(function(i){
