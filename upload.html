@@ -1,16 +1,51 @@
+<!DOCTYPE html>
+<html>
 <head>
 	<title>The Whit</title>
 	<LINK rel=stylesheet type="text/css" href="style.css">
-	<script type="text/javascript" src="gen.js"></script>
+  <script type="text/javascript" src="gen.js"></script>
+  <script type="text/javascript" src="comms.js"></script>
 </head>
+<body>
 <br><br>
-<form action="/upload.php">
+<form id="uploadForm">
   <p arial bt>Password:</p><br>
-  <input type="text" name="pass" value="password">
+  <input type="password" name="pass" id="password" required>
+  <br><p arial bt>Name of Post:</p><br>
+  <input type="text" name="name" id="nameField" placeholder="Name" required>
   <br><p arial bt>Video:</p><br>
   <input type="file" name="fileUp" id="fup">
-  <br><p arial bt>Extra Text:</p><br>
-  <input type="text" name="extra" value="extra text">
-  <input type="submit" value="Submit">
-</form> 
+  <br><p arial bt>Link:</p><br>
+  <input type="url" name="link" id="lup" placeholder="Sound Cloud Link">
+  <br><p arial bt>Description:</p><br>
+  <input type="text" name="extra" placeholder="Description">
+  <br><p arial bt>Picture:</p><br>
+  <input type="file" name="pic"/>
+  <br><br>
+</form>
+<button id="submitBtn" onclick="submitForm()">Post</button>
+<br>
+<progress id="progressBar" style="display:none" max="100" value="0"></progress>
+<h2 arial bt id="msg"></h2>
+<script>
+  function submitForm() {
+    if(document.getElementById('lup').value && document.getElementById('fup').value) {
+      document.getElemntById('msg').innerHTML = "Either upload a video OR use a link";
+      return;
+    }else if(document.getElementById('lup').value == "" && document.getElementById('fup').value == ""){
+      document.getElementById('msg').innerHTML = "Must have a video attatched or 3rd party link";
+      return;
+    }
+    checkPasswordUpload(document.getElementById('password').value, 'uploadForm', 'progressBar', 'msg');
+  };
+
+  document.getElementById('fup').addEventListener('change', function(e){
+    document.getElementById('lup').disabled = true;
+  });
+  document.getElementById('lup').addEventListener('change', function(e){
+    document.getElementById('fup').disabled = true;
+  });
+</script>
 <script type="text/javascript" src="gen.js"></script>
+</body>
+</html>
