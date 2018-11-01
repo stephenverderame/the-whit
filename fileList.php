@@ -49,9 +49,9 @@
     for($j = count($posts) - 1; $j >= 0; $j--) {
         $name = substr($posts[$j], 0, strpos($posts[$j], "<>"));
         $path = substr($posts[$j], strpos($posts[$j], "<>") + 2);
-        if(not_link($path))
-            echo "<div class=\"" . numToClass(count($posts) - $j) . "\" l=\"vid~" . $path . "\">";
-        else
+        if(not_link($path)){
+            echo "<div class=\"" . numToClass(count($posts) - $j) . "\" onclick=\"viewVid('" . $name . "')\" style=\"cursor:pointer\">";
+        }else
             echo "<div class=\"" . numToClass(count($posts) - $j) . "\">";
         echo "<h2 arial bt><strong><u>" . $name . "</u></strong></h2><br>";
         if(file_exists("database/desc/" . $name . ".txt")){

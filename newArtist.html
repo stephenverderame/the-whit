@@ -1,0 +1,30 @@
+<head>
+    <title>Whit Test Page</title>
+    <LINK rel=stylesheet type="text/css" href="style.css">
+    <script type="text/javascript" src="comms.js"></script>
+</head>
+<body>
+<br><br><br><br><br><br><br><br><br><br>
+<form id="uploadForm" onsubmit="submitFunc()">
+    <p arial bt>Artist Name:</p>
+    <input type="text" placeholder="Name" name="name" required/>
+    <br><br>
+    <p arial bt>Artist Type:</p>
+    <input type="text" placeholder="Genre" name="genre" required/>
+    <br><br>
+    <p arial bt>Artist Picture:</p>
+    <input type="file" name="pic" accept=".bmp,.jpeg,.png,.gif" required/>
+    <br><br>
+    <p arial bt>Password:</p>
+    <input type="password" id="pass" required/>
+</form>
+<button onclick="submitFunc()">Submit</button>
+<progress id="progressBar" style="display:none" value="0" max="100"></progress>
+<p id="msg"></p>
+<script>
+    function submitFunc() {
+        checkPasswordUpload(document.getElementById('pass').value, "uploadForm", "progressBar", "msg", "newArtist.php");
+    }
+</script>
+<script type="text/javascript" src="gen.js"></script>
+</body>

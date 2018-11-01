@@ -1,17 +1,19 @@
 <head>
 	<title>The Whit</title>
-	<LINK rel=stylesheet type="text/css" href="style.css">
+    <LINK rel=stylesheet type="text/css" href="style.css">
+    <script type="text/javascript" src="comms.js"></script>
 </head>
 <body>
     <br><br><br><br><br><br><br><br>
-    <table>
-        <tr id="is">
-            <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Kanye_West_at_the_2009_Tribeca_Film_Festival.jpg/220px-Kanye_West_at_the_2009_Tribeca_Film_Festival.jpg"></td>
-        </tr><tr id="ns">
-            <td>Banye</td>
-        </tr><tr id="gs" genre>
-            <td>Scoopdee Woop</td>
-        </tr>
+    <table id="dataTable">
+        <tr><td>No artists</td></tr>
     </table>
+    <br><br><br>
+    <form action="newArtist.html">
+        <input type="submit" value="Add Artist"/>
+    </form>
     <script type="text/javascript" src="gen.js"></script>
+    <script>
+        getArtistList("dataTable");
+    </script>
 </body>
