@@ -20,7 +20,7 @@
   <br><p arial bt>Description:</p><br>
   <input type="text" name="extra" placeholder="Description">
   <br><p arial bt>Picture:</p><br>
-  <input type="file" name="pic"/>
+  <input type="file" name="pic" accept=".png,.jpg,.bmp,.gif"/>
   <br><br>
 </form>
 <button id="submitBtn" onclick="submitForm()">Post</button>
@@ -30,7 +30,7 @@
 <script>
   function submitForm() {
     if(document.getElementById('lup').value && document.getElementById('fup').value) {
-      document.getElemntById('msg').innerHTML = "Either upload a video OR use a link";
+      document.getElementById('msg').innerHTML = "Either upload a video OR use a link";
       return;
     }else if(document.getElementById('lup').value == "" && document.getElementById('fup').value == ""){
       document.getElementById('msg').innerHTML = "Must have a video attatched or 3rd party link";

@@ -1,4 +1,8 @@
 <?php
+    function is_soundcloud($link){
+        if(strpos($link, "soundcloud.com") !== false) return true;
+        return false;
+    }
     function not_link($path){
         if(strpos($path, ".com") === false && strpos($path, "http") === false) return true;
         return false;
@@ -24,7 +28,7 @@
             case 5:
                 return "five";
             default:
-                return "article";
+                return "Article";
         }
     }
 
@@ -49,10 +53,13 @@
     for($j = count($posts) - 1; $j >= 0; $j--) {
         $name = substr($posts[$j], 0, strpos($posts[$j], "<>"));
         $path = substr($posts[$j], strpos($posts[$j], "<>") + 2);
+        $path = preg_replace("/\n/", "", $path);
         if(not_link($path)){
-            echo "<div class=\"" . numToClass(count($posts) - $j) . "\" onclick=\"viewVid('" . $name . "')\" style=\"cursor:pointer\">";
-        }else
-            echo "<div class=\"" . numToClass(count($posts) - $j) . "\">";
+            echo "<div class=\"article " . numToClass(count($posts) - $j) . "\" onclick=\"viewVid('" . $name . "')\" style=\"cursor:pointer\">";
+        }else if(is_soundcloud($path))
+            echo "<div class=\"article " . numToClass(count($posts) - $j) . "\">";
+        else
+            echo "<div class=\"article " . numToClass(count($posts) - $j) . "\" onclick=\"nav('" . $path . "')\" style=\"cursor:pointer\">";
         echo "<h2 arial bt><strong><u>" . $name . "</u></strong></h2><br>";
         if(file_exists("database/desc/" . $name . ".txt")){
             $f = fopen("database/desc/" . $name . ".txt", "r");
@@ -64,8 +71,9 @@
         if(!($picPath === false)){
             echo "<img src=\"" . $picPath . "\"/>";
         }
-        if(!not_link($path)){
-            echo "<a href=\"" . $path . "\">Visit Soundcloud</a>";
+        if(!not_link($path)){           
+            if(is_soundcloud($path))
+                echo "<iframe width=\"100%\" height=\"25%\" scrolling=\"no\" frameborder=\"no\" src=\"" . $path . "\"></iframe>";
         }
         echo "</div>";
 

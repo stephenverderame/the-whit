@@ -92,9 +92,6 @@ img{
 [l]{
     cursor: pointer;
 }
-div[onclick] {
-    cursor: pointer;
-}
 [words]{
     margin-right: 70%;
     text-align: center;
@@ -116,6 +113,9 @@ div[onclick] {
     width: 100%;
     height: 50px;
     float: left;
+}
+div.article:hover {
+    background-color: yellow;
 }
 
 
