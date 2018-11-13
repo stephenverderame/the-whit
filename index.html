@@ -2,25 +2,30 @@
 <html>
 	<head>
 		<title>The Whit</title>
-		<link rel=stylesheet type="text/css" href="style.css">
+		<link rel=stylesheet type="text/css" href="style2.css">
+                <link rel="icon" href="favicon.png">
+                <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+                <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+                <script type="text/javascript" src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
 		<script type="text/javascript" src="comms.js"></script>
 	</head>
-	<style>
-		div.article:hover {
-			background-color: maroon;
-		}
-	</style>
 	<script>
 		function nav(link){
 			window.location.href = link;
 		}
 	</script>
 	<body>
-		<br><br><br><br><br><br><br>
-    	<div id="container">
-			<h1 arial bt>No Articles</h1>
+        <div class="header">
+            <a href="index.html" id="title">The Whit</a>
+            <img src="whitImage.jpg"/>
+            <div class="header-right">
+                 <a href="index.html" id="home">Home</a>
+                 <a href="prof.html" id="profiles">Artist Profiles</a>
+             </div>
+        </div>
+    	<div id="container" data-simplebar>
+		<h1 arial>Loading...</h1>
     	</div>
-		<script type="text/javascript" src="gen.js"></script>
 		<script>
 			getArticleList("container");
 		</script>

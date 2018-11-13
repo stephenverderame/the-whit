@@ -1,0 +1,167 @@
+      body{
+        background-image: url(https://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-037.jpg);
+        overflow-y: hidden;
+        background-size: cover;
+      }
+      div.article{
+        border-radius: 10px 10px 10px 10px;
+        background-color: white;
+        padding: 2px 2px 4px 20px;
+        text-align: left;
+        font-family: "Karla", sans-serif;
+        box-shadow: 3px 3px 3px 2px grey;
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+      .article h1{
+        margin-right: 20px;
+        background-color: orange;
+        border-radius: 4px;
+        box-shadow: 1px 1px 1px 1px gray;
+      }
+      .article u{
+        text-decoration-color: red;
+      }
+      div.article.clickable:hover{
+        cursor: pointer;
+      }
+      div.article:hover{
+        border-color: yellow;
+        border-width: 2px;
+        border-style: solid;
+        margin-left: 0px;
+        margin-right: 0px;
+      }
+      div#container{
+        position: absolute;
+        width: 90%;
+        left: 5%;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .article img{
+        max-height: 20vh;
+        max-width: 40vw;
+        border-radius: 5px;
+      }
+      iframe{
+        max-height: 15vh;
+      }
+      
+      .header {
+        height: 10vh;
+        font-family: "Karla";
+        background-image: url("whitBanner.PNG");
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 5px;
+      }
+      .header a{
+        float: left;
+        color: black;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-size: 150%;
+        line-height: 25px;
+        border-radius: 4px;
+      }
+      .header #title{
+        font-size: 250%;
+        font-weight: bold;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        color: yellow;
+      }
+      .header img{
+        height: 80%;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 100px;
+      }
+      .header #home{
+        color: blue;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);       
+      }
+      .header #profiles{
+        color: blue;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        
+      }
+      .header a:hover{
+        background-color: rgba(255, 203, 103, 0.7);
+      }
+      .header-right{
+        float: right;
+        height: 100%;
+      }
+      .artist{
+        border-radius: 10px 10px 10px 10px;
+        background-color: white;
+        padding: 20px;
+        font-family: "Karla", sans-serif;
+        box-shadow: 3px 3px 3px 8px grey;
+        width: 50%;
+        transform: translateX(40%);
+        text-align: center;
+      }
+      .artist img{
+        max-height: 30vh;
+        max-width: 50vw;
+        border-radius: 7px;
+        border-color: yellow;
+        border-style: solid;
+        border-width: 2px;
+      }
+      
+      @media screen and (max-width: 500px) {
+        .header{
+          min-height: 120px;
+        }
+        .header a{
+          float: none;
+          display: block;
+          text-align: left;
+          line-height: 16px;
+        }
+        .header #title{
+          position: inherit;
+          transform: none;
+          top: inherit;
+          font-size: 18px;
+        }
+        .header #home{
+          position: inherit;
+          transform: none;
+          top: inherit;
+          font-size: 12px;
+          color: blue;
+        }
+        .header #profiles{
+          position: inherit;
+          transform: none;
+          top: inherit;
+          font-size: 12px;
+          color: blue;
+        }
+        .header-right{
+          float: none;
+        }
+        div#container{
+          max-height: 60vh;
+        }
+        .artist{
+          transform: translateX(30%);
+        }
+        .header img{
+          float: right;
+          transform: translateY(-100%);
+        }
+      }

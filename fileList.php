@@ -55,16 +55,16 @@
         $path = substr($posts[$j], strpos($posts[$j], "<>") + 2);
         $path = preg_replace("/\n/", "", $path);
         if(not_link($path)){
-            echo "<div class=\"article " . numToClass(count($posts) - $j) . "\" onclick=\"viewVid('" . $name . "')\" style=\"cursor:pointer\">";
+            echo "<div class=\"article clickable " . numToClass(count($posts) - $j) . "\" onclick=\"viewVid('" . $name . "')\" style=\"cursor:pointer\">";
         }else if(is_soundcloud($path))
             echo "<div class=\"article " . numToClass(count($posts) - $j) . "\">";
         else
             echo "<div class=\"article " . numToClass(count($posts) - $j) . "\" onclick=\"nav('" . $path . "')\" style=\"cursor:pointer\">";
-        echo "<h2 arial bt><strong><u>" . $name . "</u></strong></h2><br>";
+        echo "<h1><strong>" . $name . "</strong></h1><br>";
         if(file_exists("database/desc/" . $name . ".txt")){
             $f = fopen("database/desc/" . $name . ".txt", "r");
-            $line1 = substr(fgets($f), 0, 100);
-            echo "<p arial bt>" . $line1 . "</p><br>";
+            $line1 = substr(fgets($f), 0, 256);
+            echo "<p>" . $line1 . "</p><br>";
             fclose($f);
         }
         $picPath = getPicPath($name, $pics);
@@ -75,8 +75,7 @@
             if(is_soundcloud($path))
                 echo "<iframe width=\"100%\" height=\"25%\" scrolling=\"no\" frameborder=\"no\" src=\"" . $path . "\"></iframe>";
         }
-        echo "</div>";
-
-
+        echo "</div><br>";
     }
+    if(count($posts) === 0) echo "<p arial bt>No Articles</p>";
 ?>
