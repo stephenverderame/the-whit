@@ -1,31 +1,65 @@
 <head>
-    <title>Whit Test Page</title>
-    <LINK rel=stylesheet type="text/css" href="style.css">
+    <title>New Artist</title>
+    <link rel=stylesheet type="text/css" href="style2.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
     <link rel="icon" href="favicon.png">
     <script type="text/javascript" src="comms.js"></script>
 </head>
+<div class="header">
+  <a href="index.html" id="title">The Whit</a>
+  <img src="whitImage.jpg"/>
+  <div class="header-right">
+    <a href="index.html" id="home">Home</a>
+    <a href="prof.html" id="profiles">Artist Profiles</a>
+    <a href="upload.html">Upload</a>
+  </div>
+</div>
+<br><br>
 <body>
-<br><br><br><br><br><br><br><br><br><br>
-<form id="uploadForm" onsubmit="submitFunc()">
-    <p arial bt>Artist Name:</p>
-    <input type="text" placeholder="Name" name="name" required/>
-    <br><br>
-    <p arial bt>Artist Type:</p>
-    <input type="text" placeholder="Genre" name="genre" required/>
-    <br><br>
-    <p arial bt>Artist Picture:</p>
-    <input type="file" name="pic" accept=".bmp,.jpg,.png,.gif" required/>
-    <br><br>
-    <p arial bt>Password:</p>
-    <input type="password" id="pass" name="pass" required/>
-</form>
-<button onclick="submitFunc()">Submit</button>
-<progress id="progressBar" style="display:none" value="0" max="100"></progress>
-<p id="msg"></p>
+<div class="form">
+  <h3>New Artist</h3>
+  <div class="border">
+    <form id="uploadForm">
+        <br><br>
+        <div class="required">
+          Artist Name:<br>
+          <input type="text" placeholder="Name" name="Name" required/>
+        </div>
+        <br><br>
+        <div class="required">
+          Artist Type:<br>
+          <input type="text" placeholder="Genre" name="Genre or Title" required/>
+        </div>
+        <br><br>
+        <div class="required">
+          Artist Picture:<br>
+          <input type="file" name="pic" id="picUp" accept=".bmp,.jpg,.png,.gif" style="display:none" required/>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2vxSf3tPu5iwOap4xpBfAUl3C8Dsut7_KZs32v28R3Fg2I2e8" id="pic"/>
+        </div>
+        <br><br>
+        <div class="required">
+          Password:<br>
+          <input type="password" id="pass" name="pass" placeholder="Password" required/>
+        </div>
+    </form>
+    <button onclick="submitFunc()">Submit</button>
+    <progress id="progressBar" style="display:none" value="0" max="100"></progress>
+  </div>
+  <p id="msg"></p>
+</div>
 <script>
     function submitFunc() {
         checkPasswordUpload(document.getElementById('pass').value, "uploadForm", "progressBar", "msg", "newArtist.php");
     }
+    var img = document.getElementById('pic');
+    img.addEventListener('click', function(e){
+        document.getElementById('picUp').click();
+    });
+    var input = document.getElementById('picUp');
+    input.addEventListener('change', function(e){
+        document.getElementById('pic').borderColor = "orange";
+        document.getElementById('pic').borderStyle = "solid";
+        document.getElementById('pic').borderWidth = "2px";
+    });
 </script>
-<script type="text/javascript" src="gen.js"></script>
 </body>

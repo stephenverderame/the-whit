@@ -1,6 +1,6 @@
 <?php
-    function is_soundcloud($link){
-        if(strpos($link, "soundcloud.com") !== false) return true;
+    function is_iframe($link){
+        if(strpos($link, "[iframe]") !== false) return true;
         return false;
     }
     function not_link($path){
@@ -56,7 +56,7 @@
         $path = preg_replace("/\n/", "", $path);
         if(not_link($path)){
             echo "<div class=\"article clickable " . numToClass(count($posts) - $j) . "\" onclick=\"viewVid('" . $name . "')\" style=\"cursor:pointer\">";
-        }else if(is_soundcloud($path))
+        }else if(is_iframe($path))
             echo "<div class=\"article " . numToClass(count($posts) - $j) . "\">";
         else
             echo "<div class=\"article " . numToClass(count($posts) - $j) . "\" onclick=\"nav('" . $path . "')\" style=\"cursor:pointer\">";
@@ -72,8 +72,8 @@
             echo "<img src=\"" . $picPath . "\"/>";
         }
         if(!not_link($path)){           
-            if(is_soundcloud($path))
-                echo "<iframe width=\"100%\" height=\"25%\" scrolling=\"no\" frameborder=\"no\" src=\"" . $path . "\"></iframe>";
+            if(is_iframe($path))
+                echo "<iframe width=\"100%\" height=\"25%\" scrolling=\"no\" frameborder=\"no\" src=\"" . substr($path, strpos($path, "[iframe]") + 8) . "\"></iframe>";
         }
         echo "</div><br>";
     }

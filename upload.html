@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>The Whit</title>
-	<LINK rel=stylesheet type="text/css" href="style.css">
+	<title>Upload Post</title>
+	<link rel=stylesheet type="text/css" href="style2.css">
+        <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
         <link rel="icon" href="favicon.png">
-         <script type="text/javascript" src="gen.js"></script>
-         <script type="text/javascript" src="comms.js"></script>
+        <script type="text/javascript" src="comms.js"></script>
 </head>
+<div class="header">
+  <a href="index.html" id="title">The Whit</a>
+  <img src="whitImage.jpg"/>
+  <div class="header-right">
+    <a href="index.html" id="home">Home</a>
+    <a href="prof.html" id="profiles">Artist Profiles</a>
+    <a href="newArtist.html">Add Artist</a>
+  </div>
+</div>
 <body>
 <br><br>
-<form id="uploadForm">
-  <p arial bt>Password:</p><br>
-  <input type="password" name="pass" id="password" required>
-  <br><p arial bt>Name of Post:</p><br>
-  <input type="text" name="name" id="nameField" placeholder="Name" required>
-  <br><p arial bt>Video:</p><br>
-  <input type="file" name="fileUp" id="fup">
-  <br><p arial bt>Link:</p><br>
-  <input type="url" name="link" id="lup" placeholder="Sound Cloud Link">
-  <br><p arial bt>Description:</p><br>
-  <input type="text" name="extra" placeholder="Description">
-  <br><p arial bt>Picture:</p><br>
-  <input type="file" name="pic" accept=".png,.jpg,.bmp,.gif"/>
-  <br><br>
-</form>
-<button id="submitBtn" onclick="submitForm()">Post</button>
-<br>
-<progress id="progressBar" style="display:none" max="100" value="0"></progress>
-<h2 arial bt id="msg"></h2>
+<div class="form">
+  <h3>Upload Post</h3>
+  <div class="border">
+  <form id="uploadForm">
+    <div class="required">
+      <br><br>Password:<br>
+      <input type="password" name="pass" id="password" placeholder="Password" required>
+    </div>
+    <div class="required">
+      <br><br>Name of Post:<br>
+      <input type="text" name="name" id="nameField" placeholder="Name" required>
+    </div>
+    <br><br>Video:<br>
+    <input type="file" name="fileUp" id="fup" style="display:none" accept=".mp4,.mp3,.wav">
+    <img id="vidUp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2vxSf3tPu5iwOap4xpBfAUl3C8Dsut7_KZs32v28R3Fg2I2e8">
+    <br><br>Link:<br>
+    <input type="url" name="link" id="lup" placeholder="Link or Sound Cloud Embed Code" style="width:50%">
+    <br><br>Description:<br>
+    <textarea name="extra" placeholder="Description"></textarea>
+    <br><br>Picture:<br>
+    <input type="file" name="pic" id="pic" accept=".png,.jpg,.bmp,.gif" style="display:none"/>
+    <img id="picUp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2vxSf3tPu5iwOap4xpBfAUl3C8Dsut7_KZs32v28R3Fg2I2e8">
+    <br><br>
+  </form>
+  <button id="submitBtn" onclick="submitForm()">Post</button>
+  <br>
+  <progress id="progressBar" style="display:none" max="100" value="0"></progress>
+  </div>
+  <h2 arial bt id="msg"></h2>
+</div>
 <script>
   function submitForm() {
     if(document.getElementById('lup').value && document.getElementById('fup').value) {
@@ -46,7 +66,28 @@
   document.getElementById('lup').addEventListener('change', function(e){
     document.getElementById('fup').disabled = true;
   });
+  
+  var img = document.getElementById("vidUp");
+  img.addEventListener('click', function(e){
+    document.getElementById("fup").click();
+  });
+  var input = document.getElementById('fup');
+  input.addEventListener('change', function(e){
+    document.getElementById('vidUp').style.borderColor = "orange";
+    document.getElementById('vidUp').style.borderStyle = "solid";
+    document.getElementById('vidUp').style.borderWidth = "2px";
+  });
+  
+  var img2 = document.getElementById("picUp");
+  img2.addEventListener('click', function(e){
+    document.getElementById("pic").click();
+  });
+  var input2 = document.getElementById('pic');
+  input2.addEventListener('change', function(e){
+    document.getElementById('pic').style.borderColor = "orange";
+    document.getElementById('pic').style.borderStyle = "solid";
+    document.getElementById('pic').style.borderWidth = "2px";
+  });
 </script>
-<script type="text/javascript" src="gen.js"></script>
 </body>
 </html>
