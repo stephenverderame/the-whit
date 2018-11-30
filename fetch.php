@@ -15,9 +15,25 @@
                     }
                     fclose($fd);
                 }
-                echo "<php-data id=\"data\" path=\"" . $path . "\" desc=\"" . $description . "\"></php-data>";
+                if(strpos($path, "[iframe]") === false)
+                  echo "<php-data id=\"data\" path=\"" . $path . "\" desc=\"" . $description . "\"></php-data>";
+                else {
+                  $path = substr($path, strpos($path, "[iframe]") + 8);
+                  echo "<php-data id=\"data\" path=\"" . $path . "\" desc=\"" . $description . "\"></php-data>";
+                }
             }
         }
         fclose($f);        
+    }
+    
+    function mediaType() {
+       if(isset($_POST["frame"])){
+         echo "<iframe frameborder=\"no\" scrolling=\"no\" id=\"frame\" src=\"\"></iframe>";
+         echo "<php-data id=\"type\" type=\"frame\"></php-data>";
+       }
+       else {
+         echo "<video id=\"vid\" controls></video>";
+         echo "<php-data id=\"type\" type=\"vid\"></php-data>";
+       }
     }
 ?>

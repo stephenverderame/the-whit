@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="https://unpkg.com/simplebar@latest/dist/simplebar.css" />
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+    <link rel="icon" href="favicon.png">
+    <script type="text/javascript" src="comms.js"></script> 
+    <title>All Posts</title>
+    <style>
+      html{
+        height: 100%;
+      }
+      body{
+        max-height: 100%;
+        overflow-y: auto;
+      }
+      #wrapper{
+        max-height: 100%;
+        overflow-y: auto;
+      }
+      #container{
+        max-height: 100%;
+      }
+    </style>
+    <script>
+      function nav(link){
+        window.location.href = link;
+      }
+    </script>
+  </head>
+  <body>
+    
+    <div class="header">
+      <a href="index.html" id="title">The Whit</a>
+      <img src="whitImage.jpg"/>
+      <div class="header-right">
+        <a href="index.html" id="home">Home</a>
+        <a href="prof.html" id="profiles">Artist Profiles</a>
+        <a href="allList.html">All Posts</a>
+      </div>
+    </div>
+    
+    <div id="wrapper">
+      <div id="container" class="tableContainer">
+        <h1>Loading...</h1>
+      </div>
+    </div>
+    
+    <script>
+      getArticleList("container", "allList.php");
+
+      function searchFunc() {
+        var str = document.getElementById('searchBar').value;
+        var id = str.toLowerCase().replace(' ', '_');
+        var words = id.split('_');
+        var maxMatches = 0;
+        var index = 0;
+        var titles = document.querySelectorAll("h2");
+        for(var i = 0; i < titles.length; ++i) {
+          var matches = 0;
+          var word = titles[i].innerHTML.split(' ');
+          for(var j = 0; j < word.length; ++j) {
+            for(var k = 0; k < words.length; ++k){
+              if(word[j].toLowerCase() == words[k].toLowerCase()){
+                ++matches;
+              }
+            }
+          }
+          if(matches > maxMatches){
+            maxMatches = matches;
+            index = i;
+          }
+      
+        }
+        if(maxMatches == 0){
+          alert("No matches found");
+          document.getElementById('searchBar').value = "";
+          return;
+        }
+      document.getElementById(titles[index].innerHTML.toLowerCase().replace(/ /g, '_')).scrollIntoView(true);
+        
+      document.getElementById('searchBar').value = "";
+        
+      }
+    </script>
+    <script type="text/javascript" src="https://unpkg.com/simplebar@latest/dist/simplebar.js"></script>
+  </body>
+</html>

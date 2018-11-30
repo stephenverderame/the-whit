@@ -1,6 +1,6 @@
       html{
-         height: 100%;
-         width: 100%;
+        height: 100%;
+        width: 100%;
       }
       body{
         background-image: url(https://blog.visme.co/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-037.jpg);
@@ -50,6 +50,7 @@
       }
       iframe{
         max-height: 15vh;
+        width: 98%;
       }
       
       .header {
@@ -86,18 +87,11 @@
         transform: translateY(-50%);
         border-radius: 100px;
       }
-      .header #home{
+      .header-right a{
         color: blue;
         position: relative;
         top: 50%;
-        transform: translateY(-50%);       
-      }
-      .header #profiles{
-        color: blue;
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        
+        transform: translateY(-50%);        
       }
       .header a:hover{
         background-color: rgba(255, 203, 103, 0.7);
@@ -124,7 +118,122 @@
         border-style: solid;
         border-width: 2px;
       }
+      .artist h2{
+        color: blue;
+      }
+      .artist h4{
+        font-style: italic;
+      }
+      .form {
+        border-radius: 10px 10px 10px 10px;
+        background-color: white;
+        padding: 2px 2px 4px 20px;
+        font-family: "Karla", sans-serif;
+        box-shadow: 3px 3px 3px 2px grey;
+        margin: auto;
+        width: 85%;
+        padding 10px;
+        text-align: center;
+      }
       
+      .form input{
+        border: none;
+        border-bottom-style: solid;
+        border-bottom-width: 2px;
+        border-bottom-color: orange;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+      .form input:focus{
+        outline: none;
+        border-bottom-color: lightskyblue;
+      }
+      .required::after{
+        color: red;
+        content: "*";
+      }
+      .form img{
+        width: 32px;
+        border-radius: 5px;
+      }
+      .form img:hover{
+        border-color: yellow;
+        border-style: solid;
+        border-width: 2px;
+        cursor: pointer;
+      }
+      .form button{
+        background-color: orange;
+        border: none;
+        font-family: "Karel", sans-serif;
+        border-radius: 2px;
+        min-width: 10%;
+      }
+      .form button:hover{
+        background-color: yellow;
+        cursor: pointer;
+      }
+      .form textarea{
+        border-radius: 5px;
+        width: 60%;
+        min-height: 20%;
+        max-width: 100%;
+      }
+      .form textarea:focus{
+        outline: none;
+        border-color: lightskyblue;
+      }
+      .border {
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 8px;
+        padding: 10px;
+        margin: 0 auto;
+        width: 80%;
+      }
+	    .tableContainer{
+        display: table;
+        border-spacing: 30px;
+        overflow-y: auto;
+        max-height: 10vh;
+      }
+      .small{
+        min-height: 30vh;
+        display: table-row;       
+      }
+      .sarticle{
+        background-color: white;
+        border-radius: 4px;
+        box-shadow: 2px 2px 2px 2px gray;
+        text-align: center;
+        display: table-cell;
+      }
+      .sarticle img{
+        border-radius: 4px;
+        max-height: 30vh;
+        max-width: 30vw;
+        padding: 10px;
+      }
+      .sarticle:hover{
+        border-color: yellow;
+        border-style: solid;
+        border-width: 2px;
+        cursor: pointer;
+      }
+      .sarticle h2{
+        font-family: "Karla", sans-serif;
+        background-color: orange;
+        border-radius: 5px;
+        text-decoration: underline;
+      }
+      div.search{
+        background-color: white;
+        border-radius: 4px;
+        box-shadow: 2px 2px 2px gray;
+        padding: 10px;
+        margin-right: 5%;
+        margin-left: 5%;
+      }
       @media screen and (max-width: 500px) {
         .header{
           min-height: 120px;
@@ -141,14 +250,7 @@
           top: inherit;
           font-size: 18px;
         }
-        .header #home{
-          position: inherit;
-          transform: none;
-          top: inherit;
-          font-size: 12px;
-          color: blue;
-        }
-        .header #profiles{
+        .header-right a{
           position: inherit;
           transform: none;
           top: inherit;

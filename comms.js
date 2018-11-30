@@ -3,12 +3,12 @@
  * @param conatiner, element id of the element which you want to set innerHTML to the list of articles [string]
  * @return void
 */
-function getArticleList(container) {
+function getArticleList(container, destination="fileList.php") {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('load', function(e){
         document.getElementById(container).innerHTML = this.response;
     });
-    xhr.open("POST", "fileList.php", true);
+    xhr.open("POST", destination, true);
     xhr.send();
 }
 /** 
@@ -75,6 +75,29 @@ function viewVid(name) {
     document.body.appendChild(form);
     form.submit();
 
+}
+/**
+* @see viewVid
+* same as viewVid except also passes the input named "frame" to signify that vid.php should display an iframe instead of a video
+*/
+function viewFrame(name) {
+    var form = document.createElement('form');
+    form.method = 'post';
+    form.enctype = 'multipart/form-data';
+    form.style = 'display:none';
+    form.action = 'vid.php';
+    var input = document.createElement('input');
+    input.type = "text";
+    input.name = "name";
+    input.value = name;
+    var finput = document.createElement('input');
+    finput.type = "text";
+    finput.name = "frame";
+    finput.value = "placeholder";
+    form.appendChild(input);
+    form.appendChild(finput);
+    document.body.appendChild(form);
+    form.submit();
 }
 /** 
  * returns list of all artists

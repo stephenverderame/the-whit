@@ -11,5 +11,5 @@
         echo "<h4>" . $artist[1] . "</h4>";
         echo "</div><br><br>";
     }
-    if($empty) echo "<tr arial big words><td>No Artists</td></tr>";
+    if($empty) echo "<tr><td>No Artists</td></tr>";
 ?>

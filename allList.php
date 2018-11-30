@@ -1,4 +1,8 @@
 <?php
+    function getArticleType($i){
+        if($i == 1) return "left";
+        return "right";
+    }
     function is_iframe($link){
         if(strpos($link, "[iframe]") !== false) return true;
         return false;
@@ -15,23 +19,6 @@
         }
         return false;
     }
-    function numToClass($num) {
-        switch($num){
-            case 1:
-                return "one";
-            case 2:
-                return "two";
-            case 3:
-                return "three";
-            case 4:
-                return "four";
-            case 5:
-                return "five";
-            default:
-                return "Article";
-        }
-    }
-
     $list = fopen("database/list.txt", "r");
     $picsList = fopen("database/pic/piclist.txt", "r");
     $posts = array();
@@ -50,32 +37,30 @@
     }
     fclose($picsList);
     fclose($list);
+    $type = 1;
+    echo "<br><div class=\"search\"><input type=\"text\" id=\"searchBar\"><button onclick=\"searchFunc()\">Search</button></div><br>";
     for($j = count($posts) - 1; $j >= 0; $j--) {
         $name = substr($posts[$j], 0, strpos($posts[$j], "<>"));
         $path = substr($posts[$j], strpos($posts[$j], "<>") + 2);
         $path = preg_replace("/\n/", "", $path);
+        $id = preg_replace("/ /", "_", strtolower($name));
+        if($type == 1)
+            echo "<div class=\"small\">";
         if(not_link($path)){
-            echo "<div class=\"article clickable " . numToClass(count($posts) - $j) . "\" onclick=\"viewVid('" . $name . "')\" style=\"cursor:pointer\">";
+            echo "<div class=\"sarticle " . getArticleType($type) . "\" onclick=\"viewVid('" . $name . "')\" style=\"cursor:pointer\" id=\"" . $id . "\">";
         }else if(is_iframe($path))
-            echo "<div class=\"article " . numToClass(count($posts) - $j) . "\">";
+            echo "<div class=\"sarticle " . getArticleType($type) . "\" onclick=\"viewFrame('" . $name . "')\" id=\"" . $id . "\" style=\"cursor:pointer\">";
         else
-            echo "<div class=\"article " . numToClass(count($posts) - $j) . "\" onclick=\"nav('" . $path . "')\" style=\"cursor:pointer\">";
-        echo "<h1><strong>" . $name . "</strong></h1><br>";
-        if(file_exists("database/desc/" . $name . ".txt")){
-            $f = fopen("database/desc/" . $name . ".txt", "r");
-            $line1 = substr(fgets($f), 0, 256);
-            echo "<p>" . $line1 . "</p><br>";
-            fclose($f);
-        }
+            echo "<div class=\"sarticle " . getArticleType($type) . "\" onclick=\"nav('" . $path . "')\" style=\"cursor:pointer\" id=\"" . $id . "\">";
+        echo "<h2>" . $name . "</h2><br>";
         $picPath = getPicPath($name, $pics);
         if(!($picPath === false)){
             echo "<img src=\"" . $picPath . "\"/>";
         }
-        if(!not_link($path)){           
-            if(is_iframe($path))
-                echo "<iframe scrolling=\"no\" frameborder=\"no\" src=\"" . substr($path, strpos($path, "[iframe]") + 8) . "\"></iframe>";
-        }
-        echo "</div><br>";
+        echo "</div>";
+        if($type == -1)
+            echo "</div><br>";
+        $type *= -1;
     }
-    if(count($posts) === 0) echo "<p arial bt>No Articles</p>";
+    if(count($posts) === 0) echo "<p>No Articles</p>";
 ?>

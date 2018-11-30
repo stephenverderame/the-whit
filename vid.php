@@ -4,14 +4,20 @@
 ?>
 <html>
 <head>
-        <title>The Whit</title>
-	<link rel=stylesheet type="text/css" href="style2.css">
-        <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
-        <link rel="icon" href="favicon.png">
+    <title>The Whit</title>
+    <link rel=stylesheet type="text/css" href="style2.css">
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+    <link rel="icon" href="favicon.png">
+    <script src="comms.js"></script>
 </head>
 <style>
+    html{
+        height: 100%;
+    }
     body{
         text-align: center;
+        height: 100%;
+        overflow-y: auto;
     }
     div.header{
         text-align: left;
@@ -40,12 +46,13 @@
     <div class="header-right">
        <a href="index.html" id="home">Home</a>
        <a href="prof.html" id="profiles">Artist Profiles</a>
+       <a href="allList.html">All Posts</a>
     </div>
 </div>
 
 <body>
 <br><br>
-<video controls id="vid" src=""></video>
+<?php mediaType() ?>
 <br><br>
 <div class="desc">
 <p id="vidDesc"></p>
@@ -54,7 +61,11 @@
 <script>
 var url = document.getElementById('data').getAttribute('path');
 if(url){
-    document.getElementById('vid').setAttribute('src', url);
+    var type = document.getElementById('type').getAttribute('type');
+    if(type == "vid")
+      document.getElementById('vid').setAttribute('src', url);
+    else
+      document.getElementById('frame').setAttribute('src', url);
 }
 var description = document.getElementById('data').getAttribute('desc');
 if(description){

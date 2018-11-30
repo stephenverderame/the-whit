@@ -1,6 +1,6 @@
 <?php
-    function is_soundcloud($link){
-        if(strpos($link, "soundcloud.com") !== false)
+    function is_iframe($link){
+        if(strpos($link, "<iframe") !== false)
             return true;
         return false;
     }
@@ -21,11 +21,11 @@
         echo $fname . " has been posted!";
         if($nameList){
             $flink = preg_replace("/<(\/)*script>/", "", $_POST["link"]);
-            if(is_soundcloud($flink)){
+            if(is_iframe($flink)){
                 $flink = substr($flink, strpos($flink, "src=\"") + 5);
                 $flink = substr($flink, 0, strpos($flink, "\">"));
             }               
-            $str = $fname . "<>" . $flink;
+            $str = $fname . "<>[iframe]" . $flink;
             fwrite($nameList, $str . "\n");
             fclose($nameList);
         }
